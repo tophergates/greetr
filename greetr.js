@@ -4,7 +4,7 @@
 ** Date:        Saturday, March 18, 2017
 ** Description: This library is based on the Greetr library in
 **              "Javascript: Understanding the Weird Parts" on Udemy.
-**              <LINK>
+**              https://www.udemy.com/understand-javascript/learn/v4/overview
 */
 ;(function(context, $){
   "use strict";
