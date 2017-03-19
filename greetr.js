@@ -51,15 +51,15 @@
 
   // Private function which returns the standard greeting
   var standardGreeting = function(obj){
-    return `${greetings[obj.language]} ${obj.firstName}`;
+    return greetings[obj.language] + ' ' + obj.firstName;
   };
 
   // Private function which returns a formal greeting
   var formalGreeting = function(obj){
-    return `${formalGreetings[obj.language]}, ${obj.fullName()}`;
+    return formalGreetings[obj.language] + ', ' + obj.fullName();
   };
 
-  //
+  // Grabs either the formal or informal greeting and returns it
   var greeting = function(obj, formal){
     return (formal) ? formalGreeting(obj) : standardGreeting(obj);
   };
@@ -109,7 +109,7 @@
       return this;
     },
 
-    //
+    // For displaying the greeting in an HTML element
     HTMLGreeting: function(selector, formal){
       // Really basic check for the selector
       if(!selector){
@@ -126,6 +126,7 @@
       return this;
     },
 
+    // Sets the language to be used (chainable)
     setLang: function(language){
       // Set the language
       this.language = language;
