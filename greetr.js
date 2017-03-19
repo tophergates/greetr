@@ -6,7 +6,7 @@
 **              "Javascript: Understanding the Weird Parts" on Udemy.
 **              https://www.udemy.com/understand-javascript/learn/v4/overview
 */
-;(function(context, $){
+;(function(context){
   "use strict";
 
   // The Greetr entry point
