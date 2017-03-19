@@ -1,0 +1,4 @@
+input[type='text'], input[type='button'], select {
+  display: block;
+  margin: 1em 0;
+}
