@@ -10,7 +10,7 @@
   "use strict";
 
   // The Greetr entry point
-  const Greetr = function(firstName, lastName, language){
+  var Greetr = function(firstName, lastName, language){
     // Calls the initializer to avoid the need for the 'new' keyword
     // when making calls to the Greetr.
     return new Greetr.init(firstName, lastName, language);
@@ -23,10 +23,10 @@
   *****************************************
   */
   // Array of languages supported by the library
-  const supportedLangs = ['en', 'es', 'fr', 'jp'];
+  var supportedLangs = ['en', 'es', 'fr', 'jp'];
 
   // Informal greetings in various languages
-  const greetings = {
+  var greetings = {
     en: 'Hello',
     es: 'Hola',
     fr: 'Bonjour',
@@ -34,7 +34,7 @@
   };
 
   // Formal greetings in various languages
-  const formalGreetings = {
+  var formalGreetings = {
     en: 'Greetings',
     es: 'Saludos',
     fr: 'Salutations',
@@ -42,7 +42,7 @@
   };
 
   // Messages in various supported languages that will be logged to the console
-  const logMessages = {
+  var logMessages = {
     en: 'Logged in',
     es: 'Inicio sesion',
     fr: 'Connecté',
@@ -50,17 +50,17 @@
   };
 
   // Private function which returns the standard greeting
-  const standardGreeting = function(obj){
+  var standardGreeting = function(obj){
     return `${greetings[obj.language]} ${obj.firstName}`;
   };
 
   // Private function which returns a formal greeting
-  const formalGreeting = function(obj){
+  var formalGreeting = function(obj){
     return `${formalGreetings[obj.language]}, ${obj.fullName()}`;
   };
 
   //
-  const greeting = function(obj, formal){
+  var greeting = function(obj, formal){
     return (formal) ? formalGreeting(obj) : standardGreeting(obj);
   };
 
@@ -75,22 +75,23 @@
 
     // Returns the full name
     fullName: function(){
-      return `${this.firstName} ${this.lastName}`;
+      return this.firstName + ' ' + this.lastName;
     },
 
     // Basic language validation
     validateLang: function(){
       if(supportedLangs.indexOf(this.language) === -1){
-        throw `Invalid language supplied: "${this.language}"`;
+        throw 'Invalid language supplied: "' + this.language + '"';
       }
     },
 
     // Logs the login message and full name to the console.
     log: function(){
       if(console && this.logMessages){
-        console.log(`${logMessages[this.language]}: ${this.fullName()}`);
+        console.log(logMessages[this.language] + ': ' + this.fullName());
       }
 
+      // Return the object for method chaining
       return this;
     },
 
@@ -118,10 +119,8 @@
       // Get the appropriate message
       var msg = greeting(this, formal);
 
-      // Set the greeting as the HTML for the selector(s)
-      document.querySelectorAll(selector).forEach(function(el){
-        el.innerHTML = msg;
-      });
+      // Set the greeting as the HTML for the selector
+      document.querySelector(selector).innerHTML = msg;
 
       // Return the object for method chaining
       return this;
